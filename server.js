@@ -1,6 +1,7 @@
 // Import necessary dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
+import serverless from 'serverless-http';
 
 // Create Express app
 const app = express();
@@ -63,8 +64,6 @@ app.get('/trivia/scores', (req, res) => {
   res.json({ participants });
 });
 
-// Start the server
-app.listen(3000, () => {
-  console.log('Trivia app API is running on port 3000');
-});
+export const handler = serverless(app);
+
 
